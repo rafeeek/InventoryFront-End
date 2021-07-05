@@ -1,0 +1,74 @@
+<div class="container mt-5 text-center">
+    <div style="background-color: #F8F9FA;" class="main p-3 rounded">
+      <h2 style="font-weight: 600;">Update Process</h2>
+
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <div class="contain w-75 mx-auto">
+                <h5>Customer Process</h5>
+
+                <form (ngSubmit)="updateCstProcess(cstProcess)" [formGroup]="cstProcess"  class="mt-4" action="">
+                    
+                    <div class="form-group">
+                      <input type="text" formControlName="cstName" [(ngModel)]="cstName"
+                        class="form-control" name="" id="" aria-describedby="helpId" placeholder="Customer Name">
+                      <small *ngIf="false" id="helpId" class="form-text text-muted">Help text</small>
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <select class="custom-select" [(ngModel)]="processType" id="inputGroupSelect01" formControlName="processType">
+                        <option selected>Process Type</option>
+                        <option value="Buy">Buy</option>
+                        <option value="Sell">Sell</option>
+                      </select>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary mt-4">Update</button>
+                </form>
+
+
+            </div>
+        </div>
+
+
+        <div class="col-md-6">
+            <div class="contain w-75 mx-auto">
+                <h5>Update Inventory Process</h5>
+
+                <form (ngSubmit)="updateInventoryProcess(inventoryProcess)" [formGroup]="inventoryProcess"  class="mt-4" action="">
+                    <div class="form-group">
+                      <input type="text" formControlName="cost" [(ngModel)]="cost"
+                        class="form-control" name="" id="" aria-describedby="helpId" placeholder="Cost">
+                      <small *ngIf="false" id="helpId" class="form-text text-muted">Help text</small>
+                    </div>
+                    <div class="form-group">
+                      <input type="text" formControlName="count" [(ngModel)]="count"
+                        class="form-control" name="" id="" aria-describedby="helpId" placeholder="Count">
+                      <small *ngIf="false" id="helpId" class="form-text text-muted">Help text</small>
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <select  [(ngModel)]="this.Goodselected" class="custom-select" id="inputGroupSelect01" formControlName="GoodsId">
+                        <option *ngFor="let item of goodsDetails"
+                         [value]=item.id >{{item.goodsName}}</option>
+                      </select>
+                    </div>
+
+
+
+
+
+                    <button type="submit" class="btn btn-primary mt-4">Update</button>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div routerLink="/home" class="btn btn-info mt-5 mr-3">Go To Inventory</div>
+    <div onclick="window.print()" class="btn btn-outline-primary mt-5 ">Click Here To Print</div>
+    </div>
+</div>
+

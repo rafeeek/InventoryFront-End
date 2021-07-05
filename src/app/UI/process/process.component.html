@@ -1,0 +1,78 @@
+<div class="container mt-5 text-center">
+    
+    <h2 style="font-weight: 600;" class="mb-5">Process Details</h2>
+
+
+
+
+    <h5 style="font-weight: 600;" class="mt-5">Process</h5>
+    <table class="table table-bordered my-5">
+        <thead>
+          <tr>
+            <th scope="col">process Type</th>
+            <th scope="col">Cst Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr >
+            <td>{{InventoryDetails.processType}}</td>
+            <td>{{InventoryDetails.cstName}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <h5 style="font-weight: 600;" class="mt-5">Inventory process</h5>
+    <table class="table table-bordered mt-5">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Date</th>
+            <th scope="col">Count</th>
+            <th scope="col">Cost</th>
+            <th scope="col">Item Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr >
+            <td>{{InventoryDetails.id}}</td>
+            <td>{{InventoryDetails.date | date}}</td>
+            <td>{{InventoryDetails.count}}</td>
+            <td>{{InventoryDetails.cost}}</td>
+            <td>{{InventoryDetails.goodsName}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <div routerLink="/home" class="btn btn-info mt-5 mr-3">Go To Inventory</div>
+      <div [routerLink]="['/UpdateProcess' , InventoryId , ProcessId]" class="btn btn-info mt-5 mr-3">Update</div>
+      <button type="button" data-toggle="modal" data-target="#staticBackdrop" class="btn btn-danger mt-5 mr-3" (click)="deleteModel(InventoryId , ProcessId)"
+      title="Delete">Delete</button>
+      <div onclick="window.print()" class="btn btn-outline-primary mt-5 ">Click Here To Print</div>
+
+
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Confirm Delete</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Confirm to delete (process) and (Inventory Process) From DB
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" (click)="confirmedDelete()" data-dismiss="modal" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

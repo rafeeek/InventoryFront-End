@@ -1,0 +1,86 @@
+<div class="container mt-5 text-center">
+    <div style="background-color: #F8F9FA;" class="main p-3 rounded">
+      <h2 style="font-weight: 600;">Add New Process</h2>
+
+    <div class="row mt-5">
+
+
+      <!-- start of Customer Process Form -->
+        <div class="col-md-6">
+            <div class="contain w-75 mx-auto">
+                <h5>Customer Process</h5>
+
+                <form (ngSubmit)="addCstProcess(cstProcess)" [formGroup]="cstProcess"  class="mt-4" action="">
+                    
+                    <div class="form-group">
+                      <input type="text" formControlName="cstName" [(ngModel)]="EmptyCstName"
+                        class="form-control" name="" id="" aria-describedby="helpId" placeholder="Customer Name">
+                      <small *ngIf="false" id="helpId" class="form-text text-muted">Help text</small>
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <select class="custom-select" id="inputGroupSelect01" formControlName="processType">
+                        <option selected>Process Type</option>
+                        <option value="Buy">Buy</option>
+                        <option value="Sell">Sell</option>
+                      </select>
+                    </div>
+
+
+                    <button type="submit" [disabled]="processId != null" class="btn btn-primary mt-4">Submit</button>
+                </form>
+
+
+            </div>
+        </div>
+      <!-- end of Customer Process Form -->  
+
+
+
+      <!-- start of Inventory Process Form -->
+        <div class="col-md-6">
+            <div class="contain w-75 mx-auto">
+                <h5>Inventory Process</h5>
+
+                <form (ngSubmit)="addInventoryProcess(inventoryProcess)" [formGroup]="inventoryProcess"  class="mt-4" action="">
+                    <div class="form-group">
+                      <input type="text" formControlName="cost" [(ngModel)]="EmptyCost"
+                        class="form-control" name="" id="" aria-describedby="helpId" placeholder="Cost">
+                      <small *ngIf="false" id="helpId" class="form-text text-muted">Help text</small>
+                    </div>
+                    <div class="form-group">
+                      <input type="text" formControlName="count" [(ngModel)]="EmptyCount"
+                        class="form-control" name="" id="" aria-describedby="helpId" placeholder="Count">
+                      <small *ngIf="false" id="helpId" class="form-text text-muted">Help text</small>
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <select  class="custom-select" id="inputGroupSelect01" formControlName="GoodsId">
+                        <option selected>Goods Name</option>
+                        <option *ngFor="let item of goodsDetails"
+                         [value]= item.id >{{item.goodsName}}</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group mt-5"> 
+                      <input type="text" hidden formControlName="ProcessId" [(ngModel)]="processId"
+                        class="form-control" aria-describedby="helpId">
+                      <small *ngIf="false" id="helpId" class="form-text text-muted">Help text</small>
+                    </div>
+
+
+
+
+                    <button type="submit" [disabled]="processId == null" class="btn btn-primary mt-4">Submit</button>
+                    <small *ngIf="processId == null" id="helpId" class="form-text text-muted mt-2">Add Cst Process First</small>
+                </form>
+            </div>
+        </div>
+      <!-- end of Inventory Process Form -->  
+
+    </div>
+
+    <div routerLink="/home" class="btn btn-info mt-5 mr-3">Go To Inventory</div>
+    <div onclick="window.print()" class="btn btn-outline-primary mt-5 ">Click Here To Print</div>
+    </div>
+</div>

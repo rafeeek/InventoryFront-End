@@ -1,0 +1,83 @@
+<div class="container mt-5 text-center">
+    <h2 style="font-weight: 600;">All Inventory Process</h2>
+
+    <div class="add w-100 text-left mt-5 mb-4">
+        <div routerLink="/addnewprocess" class="btn btn-info">Add New Inventory Process</div>
+    </div>
+
+
+    <div class="container">
+      <div class="row clearfix">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-0">
+              <div class="card p-4">
+                  <div class="body ">
+                      <div class="table-responsive">
+                          <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                            <thead>
+                              <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Count</th>
+                                <th scope="col">Cost</th>
+                                <th scope="col">Item Name</th>
+                                <th scope="col">Cst Name</th>
+                                <th scope="col">process Type</th>
+                                <th scope="col">Other</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor=" let item of inventory ">
+                                <td>{{item.id}}</td>
+                                <td>{{item.date | date}}</td>
+                                <td>{{item.count}}</td>
+                                <td>{{item.cost}}</td>
+                                <td>{{item.goodsName}}</td>
+                                <td>{{item.cstName}}</td>
+                                <td>{{item.processType}}</td>
+                                <td style="display: flex; flex-direction: row;">
+                                  <button [routerLink]="['/process' , item.id , item.processId]" type="button" class="btn btn-primary"
+                                  data-toggle="tooltip" data-placement="top" title="Details"><i class="fas fa-info-circle"></i></button>
+                            
+                                  <button [routerLink]="['/UpdateProcess' , item.id , item.processId]" type="button" class="btn btn-info mx-2"
+                                  data-toggle="tooltip" data-placement="top" title="Update"><i class="far fa-edit"></i></button>
+                            
+                                  <div class="btn btn-danger" 
+                                   title="Delete"><i data-toggle="modal" data-target="#staticBackdrop" (click)="deleteModel($event ,item.id , item.processId)" class="fas fa-trash-alt"></i></div>
+                                </td>
+                              </tr>
+                            </tbody>
+
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+      <div onclick="window.print()" class="btn btn-light mt-5">CLICK HERE TO PRINT <i class="fas fa-print"></i></div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Confirm Delete</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Confirm to delete (process) and (Inventory Process) From DB
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" (click)="confirmedDelete()" data-dismiss="modal" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
